@@ -1,0 +1,79 @@
+{
+  "name": "invoice-management",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "deploy:functions": "cd functions && npm install && cd .. && firebase deploy --only functions",
+    "deploy:rules": "firebase deploy --only firestore:rules",
+    "test": "vitest",
+    "test:e2e": "vitest run",
+    "test:e2e:watch": "vitest watch",
+    "test:e2e:ui": "vitest --ui",
+    "test:e2e:headless": "cross-env HEADLESS=true vitest run",
+    "test:e2e:debug": "cross-env HEADLESS=false SLOWMO=100 DEVTOOLS=true vitest run",
+    "test:e2e:landing": "vitest run tests/e2e/specs/landing.test.js",
+    "test:e2e:login": "vitest run tests/e2e/specs/login.test.js",
+    "test:e2e:signup": "vitest run tests/e2e/specs/signup.test.js",
+    "test:e2e:ci": "cross-env HEADLESS=true vitest run --reporter=default --reporter=json --outputFile=test-results.json"
+  },
+  "jest": {
+    "preset": "jest-puppeteer",
+    "testMatch": [
+      "**/tests/e2e/**/*.test.js"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/tests/e2e/setup.js"
+    ],
+    "testTimeout": 30000,
+    "testEnvironment": "./tests/e2e/puppeteerEnvironment.js",
+    "transform": {},
+    "extensionsToTreatAsEsm": [
+      ".js"
+    ],
+    "moduleNameMapper": {
+      "^(\\.{1,2}/.*)\\.js$": "$1"
+    },
+    "testEnvironmentOptions": {
+      "customExportConditions": [
+        "node",
+        "node-addons"
+      ]
+    }
+  },
+  "dependencies": {
+    "@emotion/cache": "^11.14.0",
+    "@emotion/react": "^11.14.0",
+    "@emotion/server": "^11.11.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/icons-material": "^7.3.2",
+    "@mui/material": "^7.3.2",
+    "@mui/material-nextjs": "^9.0.0",
+    "@mui/x-date-pickers": "^7.23.4",
+    "axios": "^1.7.9",
+    "date-fns": "^2.30.0",
+    "firebase": "^11.0.2",
+    "next": "^15.5.15",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-hook-form": "^7.54.2",
+    "react-hot-toast": "^2.4.1",
+    "react-router-dom": "^7.0.2",
+    "recharts": "^2.15.0",
+    "sweetalert2": "^11.23.0"
+  },
+  "devDependencies": {
+    "@types/puppeteer": "^5.4.7",
+    "@types/react": "^19.0.4",
+    "@types/react-dom": "^19.0.2",
+    "@vitest/ui": "^3.2.4",
+    "cross-env": "^10.0.0",
+    "happy-dom": "^18.0.1",
+    "puppeteer": "^24.22.0",
+    "vitest": "^3.2.4"
+  }
+}
