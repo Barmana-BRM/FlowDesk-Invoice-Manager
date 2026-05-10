@@ -2,7 +2,7 @@
 
 A professional invoice management system built with React 19 and Firebase, featuring customer management, invoice creation, PDF generation, multi-currency support, and business profiles.
 
-🌐 **Live Demo**: [https://invoice.flowdesk.tech](https://invoice.flowdesk.tech)
+
 
 ## Features
 
